@@ -3,6 +3,7 @@ from pygame.locals import *
 import pygame.sprite
 import random
 
+
 seaColor = (12, 15, 95)
 hitColor = (211, 0, 0)
 missColor = (230, 230, 230)
