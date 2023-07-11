@@ -22,3 +22,4 @@ class MainMenuScreen:
         text = font.render("Play", True, (255, 255, 255))
         text_rect = text.get_rect(center=self.button_play_rect.center)
         surface.blit(text, text_rect)
+        
