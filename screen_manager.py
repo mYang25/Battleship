@@ -23,11 +23,14 @@ class ScreenManager:
                 if event.type == QUIT:
                     running = False
             
+            self.current_screen.handle_input(events)
+            
             screen.fill((0, 0, 0))
-            self.current_screen.draw(screen)
             
             self.current_screen.update()
             
+            self.current_screen.draw()
+                       
             pygame.display.flip()
             
             clock.tick(60)

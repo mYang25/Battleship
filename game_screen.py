@@ -249,6 +249,36 @@ class GameScreen:
         self.shipCounter = len(self.sizes) # remaining enemy ships counter
         self.running = True # checks if window is running
         self.screen = pygame.display.set_mode((self.width, self.height)) # create a display window
+        
+        self.enemy_sprite_positions = [
+            ((self.spriteSize + self.spacing) * col + self.spacing + self.startBufferX, (self.spriteSize + self.spacing) * row + self.spacing + self.startBufferY)
+            for row in range(10)
+            for col in range(10)
+        ]
+
+        self.ally_sprite_positions = [
+            ((self.spriteSize + self.spacing) * col + self.spacing + self.startBufferX + self.height, (self.spriteSize + self.spacing) * row + self.spacing + self.startBufferY)
+            for row in range(10)
+            for col in range(10)
+        ]
+           
+        for position in self.enemy_sprite_positions:
+            sprite = GameScreen.Sprite(self.spriteSize, self.spriteSize)
+            sprite.image = pygame.Surface((self.spriteSize, self.spriteSize))
+            sprite.image.fill(self.seaColor) 
+            sprite.rect = sprite.image.get_rect()
+            sprite.rect.topleft = position
+            self.enemy_sprites.add(sprite)
+    
+        for position in self.ally_sprite_positions:
+            sprite = GameScreen.Sprite(self.spriteSize, self.spriteSize)
+            sprite.image = pygame.Surface((self.spriteSize, self.spriteSize))
+            sprite.image.fill(self.seaColor) 
+            sprite.rect = sprite.image.get_rect()
+            sprite.rect.topleft = position
+            self.ally_sprites.add(sprite)
+        
+        GameScreen.place_ships(self.ships, self.enemy_sprites)
     
     # checks user input    
     def handle_input(self, events):
@@ -275,35 +305,6 @@ class GameScreen:
         self.ally_sprites.update()
         
     def draw(self):
-        enemy_sprite_positions = [
-            ((self.spriteSize + self.spacing) * col + self.spacing + self.startBufferX, (self.spriteSize + self.spacing) * row + self.spacing + self.startBufferY)
-            for row in range(10)
-            for col in range(10)
-        ]
-
-        ally_sprite_positions = [
-            ((self.spriteSize + self.spacing) * col + self.spacing + self.startBufferX + self.height, (self.spriteSize + self.spacing) * row + self.spacing + self.startBufferY)
-            for row in range(10)
-            for col in range(10)
-        ]
-    
-        for position in enemy_sprite_positions:
-            sprite = GameScreen.Sprite(self.spriteSize, self.spriteSize)
-            sprite.image = pygame.Surface((self.spriteSize, self.spriteSize))
-            sprite.image.fill(self.seaColor) 
-            sprite.rect = sprite.image.get_rect()
-            sprite.rect.topleft = position
-            self.enemy_sprites.add(sprite)
-    
-        for position in ally_sprite_positions:
-            sprite = GameScreen.Sprite(self.spriteSize, self.spriteSize)
-            sprite.image = pygame.Surface((self.spriteSize, self.spriteSize))
-            sprite.image.fill(self.seaColor) 
-            sprite.rect = sprite.image.get_rect()
-            sprite.rect.topleft = position
-            self.ally_sprites.add(sprite)
-        
-        GameScreen.place_ships(self.ships, self.enemy_sprites)
         
         # Draw letter labels for enemy grid
         for i, label in enumerate(self.letter_labels):

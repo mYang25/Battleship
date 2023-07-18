@@ -14,8 +14,6 @@ class MainMenuScreen:
         pass
     
     def draw(self, surface):
-        surface.fill((0, 0, 0))
-        
         # Draw the "Play" button
         pygame.draw.rect(surface, (255, 0, 0), self.button_play_rect)
         font = pygame.font.Font(None, 36)
