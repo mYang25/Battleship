@@ -274,7 +274,7 @@ class GameScreen:
         self.enemy_sprites.update()
         self.ally_sprites.update()
         
-    def draw(self, surface):
+    def draw(self):
         enemy_sprite_positions = [
             ((self.spriteSize + self.spacing) * col + self.spacing + self.startBufferX, (self.spriteSize + self.spacing) * row + self.spacing + self.startBufferY)
             for row in range(10)
