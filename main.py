@@ -9,5 +9,5 @@ if __name__ == "__main__":
     game_screen = GameScreen()
     main_menu_screen = MainMenuScreen()
     
-    screen_manager.set_screen(game_screen)
+    screen_manager.set_screen(main_menu_screen)
     screen_manager.run()
