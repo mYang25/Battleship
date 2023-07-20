@@ -84,6 +84,7 @@ class GameScreen:
         self.ally_sprites.update()
         
     def draw(self, surface):
+        surface.fill((0, 198, 238))
         
         # Draw letter labels for enemy grid
         for i, label in enumerate(self.letter_labels):

@@ -1,5 +1,8 @@
 import pygame
 from pygame.locals import QUIT
+from main_menu import MainMenuScreen
+from game_screen import GameScreen
+
 
 class ScreenManager:
     def __init__(self):
@@ -25,7 +28,12 @@ class ScreenManager:
             
             next_screen = self.current_screen.handle_input(events)
             
-            screen.fill((10, 13, 82))
+            if next_screen == "SetupGameScreen":
+                self.set_screen(GameScreen())  # Assuming SetupGameScreen is a class for that screen
+            elif next_screen == "OptionsScreen":
+                self.set_screen(GameScreen())  # Assuming OptionsScreen is a class for that screen
+            elif next_screen == "Exit":
+                running = False
             
             self.current_screen.update()
             

@@ -5,8 +5,8 @@ class MainMenuScreen:
         pygame.init()
         self.screen = pygame.display.set_mode((1000, 500))
         
-        self.title_font = pygame.font.Font(None, 48)
-        self.subtitle_font = pygame.font.Font(None, 24)
+        self.title_font = pygame.font.Font(None, 135)
+        self.subtitle_font = pygame.font.Font(None, 52)
         
         self.play_button = pygame.Rect(400, 250, 200, 50)
         self.options_button = pygame.Rect(430, 325, 140, 50)
@@ -34,11 +34,13 @@ class MainMenuScreen:
         pass
     
     def draw(self, surface):
+        surface.fill((0, 212, 255))
+        
         large_text = self.title_font.render("Battleship", True, (0, 0, 0))
         small_text = self.subtitle_font.render("with torpedos, radar, and nukes", True, (0, 0, 0))
         
-        surface.blit(large_text, (200, 100))
-        surface.blit(small_text, (225, 175))
+        surface.blit(large_text, (280, 75))
+        surface.blit(small_text, (230, 175))
         
         pygame.draw.rect(surface, (255, 0, 0), self.play_button)
         surface.blit(self.play_button_text, self.play_button_text_box)
