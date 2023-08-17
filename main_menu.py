@@ -3,7 +3,7 @@ import pygame
 class MainMenuScreen:
     def __init__(self):
         pygame.init()
-        self.screen = pygame.display.set_mode((1000, 500))
+        self.screen_color = (0, 212, 255)
         
         self.title_font = pygame.font.Font(None, 135)
         self.subtitle_font = pygame.font.Font(None, 52)
@@ -34,7 +34,7 @@ class MainMenuScreen:
         pass
     
     def draw(self, surface):
-        surface.fill((0, 212, 255))
+        surface.fill(self.screen_color)
         
         large_text = self.title_font.render("Battleship", True, (0, 0, 0))
         small_text = self.subtitle_font.render("with torpedos, radar, and nukes", True, (0, 0, 0))
